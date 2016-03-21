@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+
+</h:head>
+<h:body>
+<p:outputLabel value="JournalDev - JSF2/Primefaces Tutorial"></p:outputLabel>
+<h:form>            
+    
+ 
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+ 
+  
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="name" value="name:" />
+            <p:inputText id="name" value="#{productView.product.name}" required="true" label="name" />
+ 
+            <h:outputLabel for="description" value="Description" />
+            <p:inputText id="description" value="#{productView.product.description}" required="true" label="address" />
+            
+             <h:outputLabel for="price" value="Price:" />
+            <p:inputText id="price" value="#{productView.product.price}" required="true" label="address" />
+            
+             <h:outputLabel for="imageFile" value="ImageFile" />
+            <p:inputText id="imageFile" value="#{productView.product.imageFile}" required="true" label="address" />
+ 
+            <h:commandButton value="Submit" action="#{productView.add}" />
+        </h:panelGrid>
+    
+</h:form>
+</h:body>
+</html>

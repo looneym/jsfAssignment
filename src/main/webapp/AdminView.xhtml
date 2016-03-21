@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+<!-- <p:messages id="messages" /> -->
+<p:growl id="messages" />
+	<p:dataTable var="product" value="#{productView.products}" id="productTable">
+
+		<p:column headerText="Name">
+			<h:outputText value="#{product.name}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{product.description}" />
+		</p:column>
+
+		<p:column headerText="Price">
+			<h:outputText value="#{product.price}" />
+		</p:column>
+		
+		<p:column headerText="Image">
+			<h:outputText value="#{product.imageFile}" />
+		</p:column>
+
+		<p:column headerText="operations">
+			<h:form>
+				<p:commandButton value="edit"
+					action="#{productView.setProduct(product)}" update=":productForm"
+					resetValues="true" oncomplete="PF('productDialog').show()" />
+				<p:commandButton value="remove"
+					action="#{productView.remove(product)}"
+					update=":productTable, :messages">
+					<p:confirm header="Confirmation" message="Are you sure?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+			</h:form>
+		</p:column>
+	</p:dataTable>
+	
+	
+	
+	<p:dialog widgetVar="productDialog" closeOnEscape="true" modal="true"
+		header="product">
+		<h:form id="productForm">
+			<p:messages />
+			<p:focus />
+			<p:panelGrid columns="4">
+		name:
+		<p:inputText value="#{productView.product.name}" />
+		
+		description:
+		<p:inputText value="#{productView.product.description}" />
+		
+		price:
+		<p:inputText value="#{productView.product.price}" />
+		
+		image:
+		<p:inputText value="#{productView.product.imageFile}" />
+		
+			</p:panelGrid>
+			<p:commandButton value="save" action="#{productView.add()}"
+				update="productForm, :productTable"
+				oncomplete="handleDialogSubmit(args, 'productDialog')" />
+		</h:form>
+	</p:dialog>
+<script type="text/javascript">
+    function handleDialogSubmit(args, dialogName) {
+        if (!args.validationFailed) {
+            PF(dialogName).hide();
+        }
+    }
+</script>
+	<h:form>
+		<p:confirmDialog global="true" closeOnEscape="true">
+			<p:commandButton value="Yes" type="button"
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+	</h:form>
+</h:body>
+</html>
