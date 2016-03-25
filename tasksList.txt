@@ -1,0 +1,9 @@
+LIST OF TASKS REMIANING FOR THIS PROJECT
+
+> Give each CartItem a total which is the price multiplied by the total number of Products. Remember that a CartItem has a Product attribute and a Quantity attribute. A CartItem is not a Product!
+
+> Combine CartItems in the Cart if the customer orders the same product more than once
+
+> Create an overall total in the Cart
+
+> Add a check out button to the cart. Create a orders table in the database which links the cart information with a customer when the check out button is selected. We will assume that there is only one user. This involves a fairly complex relationship between Customer, Order, CartItem and Product Objects. Each Object will need it's own Service and Repository and persistance will have to be handled carefully. See class noted for UML diagrams 
