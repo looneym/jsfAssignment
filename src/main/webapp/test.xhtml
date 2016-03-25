@@ -1,0 +1,149 @@
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+<title>View All Products - Cans4Cash </title>
+<meta charset="UTF-8"></meta>
+<link rel="stylesheet" href="styles/layout.css" type="text/css"></link>
+
+</h:head>
+
+<h:body>
+
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="/index.html">Cans4Cash</a></h1>
+      <h2>The finest cans money can buy</h2>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/shopNow.xhtml">Shop Now</a></li>
+        <li><a href="/AdminDashboard.html">Admin Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+
+<h1>View all products</h1>
+<br/>
+
+
+<p:growl id="messages" />
+   
+ <H2 ALIGN="CENTER">All products.</H2>
+<p:dataTable value="#{productView.products}" var="product" id="productTable">
+    <p:column>
+        <f:facet name="header">
+            <h:outputText value="Product name"></h:outputText>
+        </f:facet>
+        <h:outputText value="#{product.name}"></h:outputText>
+    </p:column>
+    <p:column>
+        <f:facet name="header">
+            <h:outputText value="Product Description"></h:outputText>
+        </f:facet>
+        <h:outputText value="#{product.description}"></h:outputText>
+    </p:column>
+    
+        <p:column>
+        <f:facet name="header">
+            <h:outputText value="Product Price"></h:outputText>
+        </f:facet>
+        <h:outputText value="#{product.price}"></h:outputText>
+    </p:column>
+    
+        <p:column>
+        <f:facet name="header">
+            <h:outputText value="Product Image"></h:outputText>
+        </f:facet>
+        <h:outputText value="#{product.imageFile}"></h:outputText>
+    </p:column>
+    
+
+    
+    
+    
+    <p:column headerText="operations">
+			<h:form>
+				<p:commandButton value="edit"
+					action="#{productView.setProduct(product)}" update=":productForm"
+					resetValues="true" oncomplete="PF('productDialog').show()" />
+				<p:commandButton value="remove"
+					action="#{productView.remove(product)}"
+					update=":productTable, :messages">
+					<p:confirm header="Confirmation" message="Are you sure?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+			</h:form>
+		</p:column>
+</p:dataTable>
+
+
+
+
+<p:dialog widgetVar="productDialog" closeOnEscape="true" modal="true"
+		header="product">
+		<h:form id="productForm">
+			<p:messages />
+			<p:focus />
+			<p:panelGrid columns="2">
+		name:
+		<p:inputText value="#{productView.product.name}" />
+		
+		description:
+		<p:inputText value="#{productView.product.description}" />
+		
+			price:
+		<p:inputText value="#{productView.product.price}" />
+		
+		image:
+		<p:inputText value="#{productView.product.imageFile}" />
+		
+		
+		
+		
+			</p:panelGrid>
+			<p:commandButton value="save" action="#{productView.add()}"
+				update="productForm, :productTable"
+				oncomplete="handleDialogSubmit(args, 'productDialog')" />
+		</h:form>
+	</p:dialog>
+
+	<h:form>
+		<p:confirmDialog global="true" closeOnEscape="true">
+			<p:commandButton value="Yes" type="button"
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+	</h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	    
+    </div>
+    </div>
+    <div class="wrapper row4">
+  <footer id="copyright" class="clear">
+    <p class="fl_left">Copyright Micheál Looney 2016 - All Rights Reserved - <a href="/index.html">Cans4Cash</a></p>
+  </footer>
+</div>
+</h:body>
+</html>

@@ -53,7 +53,7 @@ public class ProductView {
 		product = new Product();
     	System.out.println("add to store");
 //    	return "./viewAndBuy.xhtml";
-    	return "./ProductOutput.xhtml";
+    	return "/AllProducts.xhtml";
     }
 	
 	private Product product;
@@ -92,6 +92,7 @@ public class ProductView {
 		   l.add(x);
 		   return l;
 	   }*/
+	   System.out.println("getCartItems");
 	   return cart.getCart();
    }
     

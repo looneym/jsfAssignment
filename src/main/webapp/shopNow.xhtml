@@ -1,0 +1,129 @@
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+<title>Shop Now - Cans4Cash </title>
+<meta charset="UTF-8"></meta>
+<link rel="stylesheet" href="styles/layout.css" type="text/css"></link>
+
+</h:head>
+
+<h:body>
+
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="/index.html">Cans4Cash</a></h1>
+      <h2>The finest cans money can buy</h2>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/shopNow.xhtml">Shop Now</a></li>
+        <li><a href="/AdminDashboard.html">Admin Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+
+
+
+<!-- <p:messages id="messages" /> -->
+<p:growl id="messages" />
+	<p:dataTable var="product" value="#{productView.products}" id="productTable">
+
+		<p:column headerText="Name">
+			<h:outputText value="#{product.name}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{product.description}" />
+		</p:column>
+
+		<p:column headerText="Price">
+			<h:outputText value="#{product.price}" />
+		</p:column>
+		
+		<p:column headerText="Image">
+			<h:outputText value="#{product.imageFile}" />
+		</p:column>
+
+		<p:column headerText="operations">
+			<h:form>
+				<p:commandButton value="addToCart"
+					action="#{productView.addToCart(product)}"
+					update=":cartTable, :messages">
+				</p:commandButton>
+			</h:form>
+		</p:column>
+	</p:dataTable>
+	<br />
+	<h1>Your cart:</h1>
+	
+	
+		<p:dataTable var="cartItem" value="#{productView.cartitems}" id="cartTable">
+
+		<p:column headerText="Name">
+			<h:outputText value="#{cartItem.name}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{cartItem.description}" />
+		</p:column>
+
+		<p:column headerText="Price">
+			<h:outputText value="#{cartItem.price}" />
+		</p:column>
+		<p:column headerText="Image">
+			<h:outputText value="#{cartItem.imageFile}" />
+		</p:column>
+		
+		<p:column headerText="operations">
+			<h:form>
+				<p:commandButton value="removeFromCart"
+					action="#{productView.removeFromCart(cartItem)}"
+					update=":cartTable, :messages">
+				</p:commandButton>
+			</h:form>
+		</p:column>
+	</p:dataTable>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<script type="text/javascript">
+    function handleDialogSubmit(args, dialogName) {
+        if (!args.validationFailed) {
+            PF(dialogName).hide();
+        }
+    }
+</script>
+	<h:form>
+		<p:confirmDialog global="true" closeOnEscape="true">
+			<p:commandButton value="Yes" type="button"
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+	</h:form>
+	
+	    
+    </div>
+    </div>
+    <div class="wrapper row4">
+  <footer id="copyright" class="clear">
+    <p class="fl_left">Copyright Micheál Looney 2016 - All Rights Reserved - <a href="/index.html">Cans4Cash</a></p>
+  </footer>
+</div>
+</h:body>
+</html>

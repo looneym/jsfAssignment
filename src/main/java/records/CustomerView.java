@@ -52,7 +52,8 @@ public class CustomerView {
 		customer = new Customer();
     	System.out.println("add to store");
 //    	return "./viewAndBuy.xhtml";
-    	return "./CustomerOutput.xhtml";
+    	return "/AllCustomers.xhtml";
+//    	return "/AdminDashboard.xhtml";
     }
 	
 	private Customer customer;
