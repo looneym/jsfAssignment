@@ -1,4 +1,4 @@
-package records;
+package cans4cash.customer;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package records;
+package cans4cash.customer;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
@@ -6,8 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 
-import shop.Cart;
-import shop.CartItem;
+import cans4cash.cart.Cart;
+import cans4cash.cart.CartItem;
 
 import java.util.List;
 

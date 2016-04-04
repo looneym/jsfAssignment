@@ -1,6 +1,6 @@
-package shop;
+package cans4cash.cart;
 
-import records.Product;
+import cans4cash.product.Product;
 
 public class CartItem {
 	

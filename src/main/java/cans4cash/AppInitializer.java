@@ -1,4 +1,4 @@
-package records;
+package cans4cash;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

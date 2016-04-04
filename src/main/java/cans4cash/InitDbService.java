@@ -1,13 +1,16 @@
-package records;
+package cans4cash;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cans4cash.product.Product;
+import cans4cash.product.ProductRepository;
+
 
 @Service
-public class xxInitDbService {
+public class InitDbService {
 
 	@Autowired
 	private ProductRepository productRepository;

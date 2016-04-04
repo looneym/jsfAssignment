@@ -1,4 +1,4 @@
-package records;
+package cans4cash.customer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

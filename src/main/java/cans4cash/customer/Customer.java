@@ -1,4 +1,4 @@
-package records;
+package cans4cash.customer;
 
 
 
@@ -7,14 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Product {
+public class Customer {
 	
-	
-	
-	private double price;
-	private String imageFile;	
+
 	private String name;
-	private String description;
+	private String password;
 
 	
 	@Id
@@ -37,36 +34,20 @@ public class Product {
 		System.out.println("set name "+name);
 		this.name = name;
 	}
-	public void setDescription(String desc) {
-		description = desc;
+	public void setPassword(String pass) {
+		password = pass;
+	}
+	
+	public String getPassword() {
+		return password;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "Student [name=" + name + ", Age=" + description + ", id=" + id + "]";
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public String getImageFile() {
-		return imageFile;
-	}
-
-	public void setImageFile(String imageFile) {
-		this.imageFile = imageFile;
-	}
-
+		return "Customer name=" + name;
+				}
+	
 }
 
 
@@ -94,24 +75,26 @@ public class Product {
 
 
 
+
+
 //
 //
-//public class Product {
-//	static int ProductId=0;
+//public class Customer {
+//	static int CustomerId=0;
 //	private int id;
 //	private String name;
 //	private String description;
 //	private double price;
 //	private String imageFile;
-//	Product (Product p){
+//	Customer (Customer p){
 //		id=p.id;
 //		name=p.name;
 //		description=p.getDescription();
 //		price=p.getPrice();
 //		imageFile=p.imageFile;
 //	}
-//	Product (String n, String d, double p,String i){
-//		id=ProductId++;
+//	Customer (String n, String d, double p,String i){
+//		id=CustomerId++;
 //		name=n;
 //		description=d;
 //		price=p;
@@ -149,7 +132,7 @@ public class Product {
 //	} 
 //	public void Print(){
 //	
-//		System.out.println(" Product id = "+ id);
+//		System.out.println(" Customer id = "+ id);
 //		System.out.print(" name= "+name);
 //		System.out.print(" description= "+description);
 //		System.out.print(" price= "+price);

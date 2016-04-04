@@ -1,9 +1,9 @@
-package shop;
+package cans4cash.cart;
 
 
 import java.util.ArrayList;
 
-import records.Product;
+import cans4cash.product.Product;
 
 public class Cart {
 	private  ArrayList<CartItem> cart;

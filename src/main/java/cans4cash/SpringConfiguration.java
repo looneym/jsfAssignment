@@ -1,4 +1,4 @@
-package records;
+package cans4cash;
 
 import java.util.Properties;
 
@@ -32,7 +32,7 @@ public class SpringConfiguration {
 		jpaProperties.put("hibernate.show_sql", "true");
 		// jpaProperties.put("hibernate.format_sql", "true");
 		entityManagerFactory.setJpaProperties(jpaProperties);
-		entityManagerFactory.setPackagesToScan("records");
+		entityManagerFactory.setPackagesToScan("cans4cash");
 		entityManagerFactory
 				.setPersistenceProvider(new HibernatePersistenceProvider());
 		return entityManagerFactory;
