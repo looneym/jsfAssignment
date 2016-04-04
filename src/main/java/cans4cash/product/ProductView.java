@@ -8,6 +8,8 @@ import javax.faces.context.FacesContext;
 
 
 import cans4cash.cart.CartItem;
+import cans4cash.cart.CartItemService;
+import cans4cash.order.Order;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +23,22 @@ public class ProductView {
    
 	@ManagedProperty("#{productService}")
     private ProductService store;
+	
+	@ManagedProperty("#{cartItemService}")
+    private CartItemService cartItemStore;
+	
+	
 	private List<Product> products;
 	private List<CartItem> cart;
 	
 	public void makeOrder(){
+		
+//		Order order = new Order();
 		System.out.println("Yo! here's the cart:");
 		for (int i = 0; i<cart.size();i++){
-		CartItem item = cart.get(i);
-		System.out.println(item.toString());
+			CartItem item = cart.get(i);
+			System.out.println(item.toString());
+			cartItemStore.save(item);
 		}
 	}
   
@@ -42,6 +52,14 @@ public class ProductView {
 
 	public void setStore(ProductService store) {
 		this.store = store;
+	}
+	
+	public void setCartItemStore(CartItemService cartItemStore){
+		this.cartItemStore = cartItemStore;
+	}
+	
+	public CartItemService getCartItemStore(){
+		return cartItemStore;
 	}
 
 

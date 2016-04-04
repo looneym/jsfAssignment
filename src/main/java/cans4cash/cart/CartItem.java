@@ -1,15 +1,39 @@
 package cans4cash.cart;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 import cans4cash.product.Product;
 
+@Entity
 public class CartItem {
 	
 
 	private int quantity;
+	
+	@OneToOne
     private Product product;
+    
+    @Id
+	@GeneratedValue
+	private int id;
+    
+    public CartItem(){
+    	
+    }
 
     
-    public CartItem(int qty, Product p) {
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public CartItem(int qty, Product p) {
 		this.quantity = qty;
 		this.product = p;
 	}
