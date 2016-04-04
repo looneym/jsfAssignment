@@ -1,4 +1,3 @@
-/Users/Micheal/Dev/apr04/src/main/java/cans4cash/order/Order.java
 /Users/Micheal/Dev/apr04/src/main/java/cans4cash/cart/CartItemService.java
 /Users/Micheal/Dev/apr04/src/main/java/cans4cash/product/Product.java
 /Users/Micheal/Dev/apr04/src/main/java/cans4cash/cart/CartItemRepository.java
@@ -14,4 +13,5 @@
 /Users/Micheal/Dev/apr04/src/main/java/cans4cash/product/ProductRepository.java
 /Users/Micheal/Dev/apr04/src/main/java/cans4cash/product/ProductService.java
 /Users/Micheal/Dev/apr04/src/main/java/cans4cash/AppInitializer.java
+/Users/Micheal/Dev/apr04/src/main/java/cans4cash/order/CustomerOrder.java
 /Users/Micheal/Dev/apr04/src/main/java/cans4cash/product/ProductView.java

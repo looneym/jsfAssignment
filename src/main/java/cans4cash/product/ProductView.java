@@ -9,7 +9,10 @@ import javax.faces.context.FacesContext;
 
 import cans4cash.cart.CartItem;
 import cans4cash.cart.CartItemService;
-import cans4cash.order.Order;
+import cans4cash.customer.Customer;
+import cans4cash.customer.CustomerService;
+import cans4cash.order.CustomerOrder;
+import cans4cash.order.OrderService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +30,32 @@ public class ProductView {
 	@ManagedProperty("#{cartItemService}")
     private CartItemService cartItemStore;
 	
+	@ManagedProperty("#{orderService}")
+	private OrderService orderStore;
 	
+	@ManagedProperty("#{customerService}")
+	private CustomerService customerStore;
+	
+	private Customer customer;
+	
+	
+	public CustomerService getCustomerStore() {
+		return customerStore;
+	}
+
+
+
+
+	public void setCustomerStore(CustomerService customerStore) {
+		this.customerStore = customerStore;
+	}
+
 	private List<Product> products;
 	private List<CartItem> cart;
 	
 	public void makeOrder(){
 		
-		Order order = new Order();
+		CustomerOrder order = new CustomerOrder();
 		System.out.println("Yo! here's the cart:");
 		for (int i = 0; i<cart.size();i++){
 			CartItem item = cart.get(i);
@@ -41,6 +63,8 @@ public class ProductView {
 			cartItemStore.save(item);
 			order.addItem(item);
 		}
+		order.setCustomer(customer);
+		orderStore.save(order);
 	}
   
    
@@ -61,6 +85,14 @@ public class ProductView {
 	
 	public CartItemService getCartItemStore(){
 		return cartItemStore;
+	}
+	
+	public void setOrderStore(OrderService orderStore){
+		this.orderStore = orderStore;
+	}
+	
+	public OrderService getOrderStore(){
+		return orderStore;
 	}
 
 
@@ -93,6 +125,8 @@ public class ProductView {
     	System.out.println("postconstruct product");
     	products = store.findAll();
     	cart = new ArrayList<CartItem>();
+    	customer = new Customer("John", "password");
+    	customerStore.save(customer);
     }
     
     public void remove(Product p) {

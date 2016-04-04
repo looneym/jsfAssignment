@@ -12,15 +12,15 @@ public class OrderService {
 	@Autowired
 	private OrderRepository orderRepository;
 	
-	public List<Order> findAll() {
+	public List<CustomerOrder> findAll() {
 		return orderRepository.findAll();
 	}
 
-	public void save(Order order) {
+	public void save(CustomerOrder order) {
 		orderRepository.save(order);
 	}
 
-	public void remove(Order order) {
+	public void remove(CustomerOrder order) {
 		orderRepository.delete(order);
 	}
 

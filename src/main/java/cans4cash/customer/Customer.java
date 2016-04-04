@@ -17,8 +17,17 @@ public class Customer {
 	@Id
 	@GeneratedValue
 	private int id;
+	
+	public Customer(){
+		
+	}
 
 	
+	public Customer(String name, String password) {
+		this.name = name;
+		this.password = password;
+	}
+
 	public int getId() {
 		return id;
 	}

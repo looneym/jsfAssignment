@@ -2,6 +2,7 @@ package cans4cash.order;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import cans4cash.customer.Customer;
 import cans4cash.cart.CartItem;
 
 @Entity
-public class Order {
+public class CustomerOrder {
 	
 	private String date;
 	
@@ -27,8 +28,11 @@ public class Order {
 	@Id
 	private int id;
 	
-	public Order(){
+	public CustomerOrder(){
 		items = new ArrayList<CartItem>();
+		// Get today's date as a String
+		date = new Date().toString();
+		
 	}
 
 	public String getDate() {

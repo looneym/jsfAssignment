@@ -5,6 +5,9 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cans4cash.cart.CartItemRepository;
+import cans4cash.customer.CustomerRepository;
+import cans4cash.order.OrderRepository;
 import cans4cash.product.Product;
 import cans4cash.product.ProductRepository;
 
