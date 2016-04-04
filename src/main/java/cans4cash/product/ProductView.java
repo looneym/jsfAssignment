@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import cans4cash.cart.Cart;
 import cans4cash.cart.CartItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -21,7 +22,7 @@ public class ProductView {
 	@ManagedProperty("#{productService}")
     private ProductService store;
 	private List<Product> products;
-	private Cart cart;
+	private List<CartItem> cart;
   
    
 
@@ -64,7 +65,7 @@ public class ProductView {
     	product = new Product();
     	System.out.println("postconstruct product");
     	products = store.findAll();
-    	cart = new Cart();
+    	cart = new ArrayList<CartItem>();
     }
     
     public void remove(Product p) {
@@ -76,13 +77,15 @@ public class ProductView {
     
     public void addToCart(Product p){
     	System.out.println("Called ProductView.addToCart");
-    	cart.add(1, p);
+    	System.out.println(p);
+    	CartItem item = new CartItem(1 ,p);
+    	cart.add(item);
     	
     	
     }
     
     public void removeFromCart(CartItem c){
-    	cart.deleteItem(c);
+    	cart.remove(c);
     }
     
    public List<CartItem> getCartitems(){
@@ -93,7 +96,7 @@ public class ProductView {
 		   return l;
 	   }*/
 	   System.out.println("getCartItems");
-	   return cart.getCart();
+	   return cart;
    }
     
     public Product getProduct() {

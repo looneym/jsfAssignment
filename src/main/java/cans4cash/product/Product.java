@@ -44,7 +44,7 @@ public class Product {
 	
 	@Override
 	public String toString() {
-		return "Student [name=" + name + ", Age=" + description + ", id=" + id + "]";
+		return "Product [name=" + name + ", Description=" + description + ", id=" + id + "]";
 	}
 
 	public double getPrice() {
