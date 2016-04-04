@@ -23,6 +23,14 @@ public class ProductView {
     private ProductService store;
 	private List<Product> products;
 	private List<CartItem> cart;
+	
+	public void makeOrder(){
+		System.out.println("Yo! here's the cart:");
+		for (int i = 0; i<cart.size();i++){
+		CartItem item = cart.get(i);
+		System.out.println(item.toString());
+		}
+	}
   
    
 
