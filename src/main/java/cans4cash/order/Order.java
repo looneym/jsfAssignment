@@ -1,5 +1,6 @@
 package cans4cash.order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -25,6 +26,10 @@ public class Order {
 	@GeneratedValue
 	@Id
 	private int id;
+	
+	public Order(){
+		items = new ArrayList<CartItem>();
+	}
 
 	public String getDate() {
 		return date;
@@ -48,6 +53,15 @@ public class Order {
 
 	public void setItems(List<CartItem> items) {
 		this.items = items;
+	}
+	
+	public void addItem(CartItem item){
+		items.add(item);
+		
+	}
+	
+	public void removeItem(CartItem item){
+		items.remove(item);
 	}
 
 	public int getId() {

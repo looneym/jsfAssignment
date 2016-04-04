@@ -33,12 +33,13 @@ public class ProductView {
 	
 	public void makeOrder(){
 		
-//		Order order = new Order();
+		Order order = new Order();
 		System.out.println("Yo! here's the cart:");
 		for (int i = 0; i<cart.size();i++){
 			CartItem item = cart.get(i);
 			System.out.println(item.toString());
 			cartItemStore.save(item);
+			order.addItem(item);
 		}
 	}
   
