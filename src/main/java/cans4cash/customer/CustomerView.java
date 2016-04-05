@@ -56,6 +56,14 @@ public class CustomerView {
 //    	return "/AdminDashboard.xhtml";
     }
 	
+	public String login(){
+		store.save(customer);
+		System.out.println(" saved customer: "+customer.toString());
+		customer = new Customer();
+    	System.out.println("add to store");
+    	return "/LoggedIn.xhtml";
+    }
+	
 	private Customer customer;
     
     @PostConstruct

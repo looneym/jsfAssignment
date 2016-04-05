@@ -1,0 +1,78 @@
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+<title>Log In - Cans4Cash </title>
+<meta charset="UTF-8"></meta>
+<link rel="stylesheet" href="styles/layout.css" type="text/css"></link>
+
+</h:head>
+
+<h:body>
+
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="/index.html">Cans4Cash</a></h1>
+      <h2>The finest cans money can buy</h2>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/shopNow.xhtml">Shop Now</a></li>
+        <li><a href="/AdminDashboard.html">Admin Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+
+<h1>Log in </h1>
+<br/>
+
+
+
+<h:form>            
+    
+ 
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+ 
+  
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="name" value="name:" />
+            <h:inputText id="name" value="#{customerView.customer.name}" required="true" label="name" />
+ 
+            <h:outputLabel for="password" value="Password" />
+            <h:inputSecret id="password" value="#{customerView.customer.password}" required="true" label="address" />
+            
+       
+            <h:commandButton value="Submit" action="#{customerView.login}" />
+        </h:panelGrid>
+    
+</h:form>
+
+
+
+
+
+
+
+
+
+
+
+	
+	    
+    </div>
+    </div>
+    <div class="wrapper row4">
+  <footer id="copyright" class="clear">
+    <p class="fl_left">Copyright Micheál Looney 2016 - All Rights Reserved - <a href="/index.html">Cans4Cash</a></p>
+  </footer>
+</div>
+</h:body>
+</html>
