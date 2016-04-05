@@ -15,7 +15,7 @@ public class CartItem {
 
 	private int quantity;
 	
-	@OneToOne
+	@OneToOne()
     private Product product;
     
     @Id

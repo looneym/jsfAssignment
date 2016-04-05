@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -21,7 +22,7 @@ public class CustomerOrder {
 	@OneToOne
 	private Customer customer;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<CartItem> items;
 	
 	@GeneratedValue

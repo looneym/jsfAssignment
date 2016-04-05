@@ -37,6 +37,8 @@ public class ProductView {
 	private CustomerService customerStore;
 	
 	private Customer customer;
+	private CustomerOrder order;
+	private List<CartItem> orderItems;
 	
 	
 	public CustomerService getCustomerStore() {
@@ -53,7 +55,7 @@ public class ProductView {
 	private List<Product> products;
 	private List<CartItem> cart;
 	
-	public void makeOrder(){
+	public String makeOrder(){
 		
 		CustomerOrder order = new CustomerOrder();
 		System.out.println("Yo! here's the cart:");
@@ -65,6 +67,21 @@ public class ProductView {
 		}
 		order.setCustomer(customer);
 		orderStore.save(order);
+		return "/PostCheckout.xhtml";
+	}
+	
+	public List<CartItem> getOrderItems(){
+		List<CustomerOrder> orders = orderStore.findAll();
+		order = orders.get(0);
+		orderItems = order.getItems();
+		return orderItems;
+		
+	}
+	
+	public CustomerOrder getOrder(){
+		List<CustomerOrder> orders = orderStore.findAll();
+		order = orders.get(0);
+		return order;
 	}
   
    

@@ -1,0 +1,92 @@
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+<title>Order Summary - Cans4Cash </title>
+<meta charset="UTF-8"></meta>
+<link rel="stylesheet" href="styles/layout.css" type="text/css"></link>
+
+</h:head>
+
+<h:body>
+
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="/index.html">Cans4Cash</a></h1>
+      <h2>The finest cans money can buy</h2>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/shopNow.xhtml">Shop Now</a></li>
+        <li><a href="/AdminDashboard.html">Admin Dashboard</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+
+<h1>Thanks for ordering from Cans4Cash!</h1>
+    <p>Here's a summary of your order:</p>
+    
+   
+    
+
+	    
+    <p:dataTable var="item" value="#{productView.orderItems}" id="orderTable">
+
+        <p:column headerText="Name">
+            <h:outputText value="#{item.product.name}" />
+        </p:column>
+
+        <p:column headerText="Description">
+            <h:outputText value="#{item.product.description}" />
+        </p:column>
+
+        <p:column headerText="Price">
+            <h:outputText value="#{item.product.price}" />
+        </p:column>
+        
+        <p:column headerText="Image">
+            <h:outputText value="#{item.product.imageFile}" />
+        </p:column>
+
+
+    </p:dataTable>
+	
+	
+	
+	
+	
+	
+<script type="text/javascript">
+    function handleDialogSubmit(args, dialogName) {
+        if (!args.validationFailed) {
+            PF(dialogName).hide();
+        }
+    }
+</script>
+	<h:form>
+		<p:confirmDialog global="true" closeOnEscape="true">
+			<p:commandButton value="Yes" type="button"
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+	</h:form>
+	
+	    
+    </div>
+    </div>
+    <div class="wrapper row4">
+  <footer id="copyright" class="clear">
+    <p class="fl_left">Copyright Micheál Looney 2016 - All Rights Reserved - <a href="/index.html">Cans4Cash</a></p>
+  </footer>
+</div>
+</h:body>
+</html>
