@@ -130,10 +130,16 @@ public class ProductView {
     }
     
     public void remove(Product p) {
+    	try{
 		store.remove(p);
 		products = store.findAll();
 		FacesContext.getCurrentInstance().addMessage
-			(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Product removed!", null));
+			(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Product removed!", null));}
+    	catch(Exception e){
+    		FacesContext.getCurrentInstance().addMessage
+			(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Unable to delete product. It exists as a foreign key in orders table", null));
+    		
+    	}
 	}
     
     public void addToCart(Product p){
