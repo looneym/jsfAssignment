@@ -65,10 +65,25 @@ public class ProductView {
 			cartItemStore.save(item);
 			order.addItem(item);
 		}
+		
+		
+		
+		
+		try {
+			customer = customerStore.findAll().get(0);
+		} catch(Exception e){
+			FacesContext.getCurrentInstance().addMessage
+			(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "You cannot make an order without loggin in", null));
+			return "/Login.xhtml";	
+		}
 		order.setCustomer(customer);
 		orderStore.save(order);
 		return "/PostCheckout.xhtml";
+			
+
+		
 	}
+	
 	
 	public List<CartItem> getOrderItems(){
 		List<CustomerOrder> orders = orderStore.findAll();
@@ -142,8 +157,6 @@ public class ProductView {
     	System.out.println("postconstruct product");
     	products = store.findAll();
     	cart = new ArrayList<CartItem>();
-    	customer = new Customer("John", "password");
-    	customerStore.save(customer);
     }
     
     public void remove(Product p) {
