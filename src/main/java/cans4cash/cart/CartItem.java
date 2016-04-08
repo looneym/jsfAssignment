@@ -60,6 +60,12 @@ public class CartItem {
     	return product;
     }
 
+
+	public void decrementQuantity() {
+		quantity--;
+		
+	}
+
     
     
     

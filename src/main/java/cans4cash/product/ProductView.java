@@ -183,6 +183,8 @@ public class ProductView {
     			return;
     		}
     	}
+    	
+    	
 
 		System.out.println("New cart item created");
     	CartItem item = new CartItem(1 ,p);
@@ -190,6 +192,22 @@ public class ProductView {
     	
     	}
     	
+    
+    
+    public void addOne(CartItem item){
+    	item.incrementQuantity();
+		
+	}
+    
+    public void removeOne(CartItem item){
+    	if (item.getQuantity() <= 1){
+    		removeFromCart(item);
+    		
+    	} else {
+    	item.decrementQuantity();
+    	}
+		
+  	}
     	
     
     

@@ -89,8 +89,20 @@
 		
 		<p:column headerText="operations">
 			<h:form>
-				<p:commandButton value="removeFromCart"
+				<p:commandButton value="Remove all"
 					action="#{productView.removeFromCart(cartItem)}"
+					update=":cartTable, :messages">
+				</p:commandButton>
+			</h:form>
+			<h:form>
+				<p:commandButton value="Remove one"
+					action="#{productView.removeOne(cartItem)}"
+					update=":cartTable, :messages">
+				</p:commandButton>
+			</h:form>
+			<h:form>
+				<p:commandButton value="Add one"
+					action="#{productView.addOne(cartItem)}"
 					update=":cartTable, :messages">
 				</p:commandButton>
 			</h:form>
