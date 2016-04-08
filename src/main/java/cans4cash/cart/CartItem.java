@@ -48,6 +48,10 @@ public class CartItem {
     	quantity = q;
     }
     
+    public void incrementQuantity(){
+    	quantity++;
+    }
+    
     public void setProduct(Product p){
     	product = p;
     }

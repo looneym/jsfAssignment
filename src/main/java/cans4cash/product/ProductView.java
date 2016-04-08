@@ -175,17 +175,29 @@ public class ProductView {
     public void addToCart(Product p){
     	System.out.println("Called ProductView.addToCart");
     	System.out.println(p);
+    	for (int i = 0 ; i < cart.size() ; i++){
+    		CartItem item = cart.get(i);
+    		if (item.getProduct().getId() == p.getId()){
+    			System.out.println("Incrementing");
+    			item.incrementQuantity();
+    			return;
+    		}
+    	}
+
+		System.out.println("New cart item created");
     	CartItem item = new CartItem(1 ,p);
-    	cart.add(item);
+    	cart.add(item); 
+    	
+    	}
     	
     	
-    }
+    
     
     public void removeFromCart(CartItem c){
     	cart.remove(c);
     }
     
-   public List<CartItem> getCartitems(){
+   public List<CartItem> getCart(){
 	  /* ArrayList<CartItem> l = cart.getCart();
 	   if (l.size() == 0){
 		   CartItem x = new CartItem(1,new Product());
