@@ -14,6 +14,7 @@ public class CartItem {
 	
 
 	private int quantity;
+	private double total;
 	
 	@OneToOne()
     private Product product;
@@ -64,6 +65,11 @@ public class CartItem {
 	public void decrementQuantity() {
 		quantity--;
 		
+	}
+	
+	public double getTotal(){
+		total = quantity * product.getPrice();
+		return total;
 	}
 
     

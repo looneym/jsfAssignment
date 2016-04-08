@@ -57,7 +57,7 @@
 			<h:form>
 				<p:commandButton value="addToCart"
 					action="#{productView.addToCart(product)}"
-					update=":cartTable, :messages">
+					update=":cartTable, :messages , :cartTotal">
 				</p:commandButton>
 			</h:form>
 		</p:column>
@@ -76,9 +76,7 @@
 			<h:outputText value="#{cartItem.product.description}" />
 		</p:column>
 
-		<p:column headerText="Price">
-			<h:outputText value="#{cartItem.product.price}" />
-		</p:column>
+	
 		<p:column headerText="Image">
 			<h:outputText value="#{cartItem.product.imageFile}" />
 		</p:column>
@@ -87,31 +85,43 @@
 			<h:outputText value="#{cartItem.quantity}" />
 		</p:column>
 		
+		<p:column headerText="Price">
+			<h:outputText value="#{cartItem.product.price}" />
+		</p:column>
+		
+		<p:column headerText="Item Total">
+			<h:outputText value="#{cartItem.total}" />
+		</p:column>
+		
 		<p:column headerText="operations">
 			<h:form>
 				<p:commandButton value="Remove all"
 					action="#{productView.removeFromCart(cartItem)}"
-					update=":cartTable, :messages">
+					update=":cartTable, :messages , :cartTotal">
 				</p:commandButton>
 			</h:form>
 			<h:form>
 				<p:commandButton value="Remove one"
 					action="#{productView.removeOne(cartItem)}"
-					update=":cartTable, :messages">
+					update=":cartTable, :messages , :cartTotal">
 				</p:commandButton>
 			</h:form>
 			<h:form>
 				<p:commandButton value="Add one"
 					action="#{productView.addOne(cartItem)}"
-					update=":cartTable, :messages">
+					update=":cartTable, :messages , :cartTotal">
 				</p:commandButton>
 			</h:form>
 		</p:column>
 	</p:dataTable>
 	
 		<p:commandButton value="Make Order"
-					action="#{productView.makeOrder()}">
+					action="#{productView.makeOrder()}"
+					update=":messages ">
 				</p:commandButton>
+				
+				<h:outputText value="#{productView.cartTotal}" id="cartTotal"/>
+				
 	
 	
 	

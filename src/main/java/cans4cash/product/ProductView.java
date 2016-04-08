@@ -39,6 +39,16 @@ public class ProductView {
 	private Customer customer;
 	private CustomerOrder order;
 	private List<CartItem> orderItems;
+	private double cartTotal;
+	
+	public double getCartTotal(){
+		cartTotal = 0;
+		for (int i = 0 ; i< cart.size() ; i++){
+			CartItem item = cart.get(i);
+			cartTotal = cartTotal + item.getTotal();
+		}
+		return cartTotal;
+	}
 	
 	
 	public CustomerService getCustomerStore() {
@@ -59,6 +69,13 @@ public class ProductView {
 		
 		CustomerOrder order = new CustomerOrder();
 		System.out.println("Yo! here's the cart:");
+		if (cart.isEmpty()){
+			System.out.println("Empty cart:");
+
+			FacesContext.getCurrentInstance().addMessage
+			(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "You cannot make an order with no items in it", null));
+			return "/shopNow.xhtml";
+		}
 		for (int i = 0; i<cart.size();i++){
 			CartItem item = cart.get(i);
 			System.out.println(item.toString());
@@ -78,6 +95,7 @@ public class ProductView {
 		}
 		order.setCustomer(customer);
 		orderStore.save(order);
+		cart.clear();
 		return "/PostCheckout.xhtml";
 			
 
